@@ -1,0 +1,15 @@
+HipaaLog
+========
+
+Introduction goes here.
+
+
+Example
+=======
+
+Add the following to any controller
+
+hipaa_filter (optional rails filter parameters)
+
+
+Copyright (c) 2008 [name of plugin creator], released under the MIT license

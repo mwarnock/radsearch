@@ -1,0 +1,6 @@
+Remove Symlinks from install.rb (make cp again)
+Improve Docs
+
+Recent Additions:
+Add conditional passing for som_rounded_container
+Add Table Template

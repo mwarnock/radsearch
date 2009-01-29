@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+  <title>APPLICATION_TITLE</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <%= stylesheet_link_tag 'som_style', 'som_table_styles' %>
+  <%= javascript_include_tag :defaults %> 
+  <%= javascript_include_tag 'som_skin', 'som_sortable_table' %> 
+</head>
+
+<body>
+
+<div id="header-background">
+<table border="0" cellpadding="0" cellspacing="0" class="header">
+  <tr>
+    <td id="headingUL">
+    </td>
+    <td id="headingUR">
+    &nbsp;
+    </td>
+  </tr>
+
+</table>
+
+<table border="0" cellpadding="0" cellspacing="0" class="header">
+  <tr>
+    <td id="logo">
+          </td>
+    <td>
+      <div>
+        <h1 class='site-name'><a href="/" title="Home">Department Of Radiology: APPLICATION_TITLE</a></h1>
+        <span class='breadcrumb'></span>
+      </div>
+    </td>
+
+    <td id="menu">
+            <div id="primary">
+              <a href='http://radlnx1.umm.edu/radtracker'>RadTracker</a> |
+	      <a href='http://radweb1.radiology.umm.edu/cvmgr'>CV Manager</a>
+	    </div>
+    </td>
+  </tr>
+</table>
+</div>
+
+<table border="0" cellpadding="0" cellspacing="0" id="content">
+  <tr>
+    <td id="sidebar-left">
+    </td>
+    <td valign="top">
+      <div class='padded' id="main">
+        <div id="flash"><%= flash[:notice] %></div>
+      
+        <%= @content_for_layout %>
+
+      </div>
+    </td>
+    <% if @localnav %>
+    <td id="sidebar-right">
+    </td>
+    <% end %>
+  </tr>
+</table>
+<div id="footer">
+  University of Maryland Medical Center 22 South Greene Street Baltimore, Maryland 21201 1.800.492.5538 TDD: 410.328.9600
+</div>
+</body>
+</html>
+
+

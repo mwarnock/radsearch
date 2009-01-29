@@ -1,10 +1,25 @@
 class ReportsController < ApplicationController
+  before_filter :authenticate
+  hipaa_filter
+
+  def index
+  end
+
+  def show
+    @search_terms = session[:search_terms]
+    @search_terms ||= []
+    @report = IdxReport.find(params[:id])
+    respond_to do |format|
+      format.json { render :json => @report.attributes.to_json }
+      format.html
+    end
+  end
 
   def search
     @search_string = params[:search]
     @search_string ||= params[:query]
 
-    results = Report.find_by_sphinx(@search_string)
+    results = IdxReport.search(@search_string)
 
     respond_to do |format|
       format.json { render :json => (results.collect(&:attributes)).to_json }
@@ -16,8 +31,8 @@ class ReportsController < ApplicationController
     @field = params[:field]
     @value = params[:value]
 
-    if Report.respond_to?("find_by_#{@field}")
-      report = Report.send("find_by_#{@field}", @value)
+    if IdxReport.respond_to?("find_by_#{@field}")
+      report = IdxReport.send("find_by_#{@field}", @value)
 
       respond_to do |format|
         format.json do

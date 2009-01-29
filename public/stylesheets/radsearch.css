@@ -1,0 +1,53 @@
+/* FORM */
+
+.form-heading {
+  color: #103262;
+  font-size: 1.5em;
+  margin-top: 10px;
+}
+
+.form-element-heading {
+  color: #103262;
+  font-weight: bold;
+}
+
+.error-message {
+  margin: 10px;
+  border: 2px solid #9a1a1a;
+  background-color: #e3e3e3;
+  font-weight: bold;
+  color: #9a1a1a;
+  padding: 5px;
+}
+
+
+/* RESULTS */
+
+div.short-report {
+  display: block;
+  margin: 10px;
+}
+
+div.short-report .study-info {
+  padding: 5px;
+  color: white;
+  border: 2px solid #4c4c4c;
+  background-color: #2e5185;
+  margin-bottom: 10px;
+}
+
+div.short-report .study-info .heading {
+  font-size: 10pt;
+  font-weight: bold;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+div.short-report .body {
+  padding: 5px;
+}
+
+.highlight {
+  background-color: #fdfb73;
+}
