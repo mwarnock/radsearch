@@ -13,7 +13,7 @@ class SearchController < ApplicationController
     contains_reason = @reasons_for.values.include?("1")
     @reports = IdxReport.search(@search_string) if contains_reason
     jsoned_reasons = (@reasons_for.keys.inject([]) {|list,key| list.push(key) if @reasons_for[key] == "1"; list }).to_json
-    @search_log = SearchLog.create(:username => session[:username], :search_string => @search_string, :reason_for => jsoned_reasons)
+    @search_log = SearchLog.create(:username => session[:username], :search_string => @search_string, :reason_for => jsoned_reasons) if contains_reason
 
     respond_to do |format|
       format.js { render :partial => "search/results", :locals => {:reports => @reports, :search_terms => @search_string} } if contains_reason
