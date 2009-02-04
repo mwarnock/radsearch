@@ -1,14 +1,16 @@
 <div class="short-report">
-  <a href="<%= url_for(:controller => :reports, :action => :show, :id => @report.id) %>">
-    <div class="study-info">
-      <span class="heading">Accession #</span>
-      <span class="info"><%= @report.accession_number %></span>
-      <span class="heading">Reason For Study:</span>
-      <span class="info"><%= @report.diag %></span>
-      <span class="heading">Procedure Name:</span>
-      <span class="info"><%= @report.procedure_name %></span>
-    </div>
-  </a>
+  <div class="study-info">
+    <span class="heading">Accession #</span>
+    <span class="info"><%= @report.accession_number %></span>
+    <span class="heading">Patient ID</span>
+    <span class="info"><%= @report.patient_id %>
+  </div>
+  <span class="heading">Procedure Name:</span>
+  <span class="info"><%= @report.procedure_name %></span>
+  <span class="heading">Reason For Study:</span>
+  <span class="info"><%= @report.diag %></span>
+  <span class="heading">Image Status:</span>
+  <span class="info"><%= @report.image_status %></span>
   <div class="body">
     <% highlight_words(@search_terms) do %>
       <%= format_report(@report.report) %>

@@ -22,7 +22,10 @@ class IdxReport < ActiveRecord::Base
   end
 
   def image_status
-    
+  end
+
+  def formated_patient_id
+    self.patient_id.gsub(/^0+/, "")
   end
 
 end

@@ -1,5 +1,5 @@
 <div class="form-heading">Search</div>
-<p style="font-weight: bold;">The use of this tool for research without prior IRB approval, waiver, or exemption is forbidden</p>
+<p style="font-weight: bold;">This tool is intended to be used for clinical decision support, education, and/or training. Access to images or data for research purposes requires a current, IRB-approved protocol. All uses of rad-search are logged and archived.</p>
 
 <% remote_form_for :search, :url => {:action => "results"}, :update => "results", :loading => "$('form_spinner').show();", :loaded => "$('form_spinner').hide();" do |f| %>
   <div>
