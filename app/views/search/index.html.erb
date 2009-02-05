@@ -3,9 +3,10 @@
 
 <% remote_form_for :search, :url => {:action => "results"}, :update => "results", :loading => "$('form_spinner').show();", :loaded => "$('form_spinner').hide();" do |f| %>
   <div>
-  <%= f.text_field :search_string, :class => "search-box" %>
+  <%= f.text_field :search_string, :class => "search-box", :size => 55 %>
   <%= submit_tag "Search" %>
   <%= image_tag("/images/spinner.gif", :id => "form_spinner", :style => "display: none;") %>
+  <%= content_tag(:div, link_to("Search Features Explained", :action => "explanation")) %>
   <%= content_tag(:div, "Reason For Search", :class => "form-heading") %>
   <%= render :partial => "search/reasons_for" %>
   </div>

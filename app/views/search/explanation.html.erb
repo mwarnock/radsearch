@@ -1,0 +1,137 @@
+<div class="sect2" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h1>
+<a name="boolean-syntax"></a>
+4.2. Boolean query syntax
+</h1>
+</div>
+</div>
+</div>
+<p> Boolean queries allow the following special operators to be used: </p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+explicit operator AND:
+<pre class="programlisting">hello & world</pre>
+</li>
+<li>
+operator OR:
+<pre class="programlisting">hello | world</pre>
+</li>
+<li>
+operator NOT:
+<pre class="programlisting">hello -world hello !world </pre>
+</li>
+<li>
+grouping:
+<pre class="programlisting">( hello world )</pre>
+</li>
+</ul>
+</div>
+<p> Here's an example query which uses all these operators: </p>
+<div class="example">
+<a name="ex-boolean-query"></a>
+<p class="title">
+<b>Complex Boolean query example</b>
+</p>
+<div class="example-contents">
+<pre class="programlisting">( cat -dog ) | ( cat -mouse) </pre>
+</div>
+</div>
+<p>
+<br class="example-break" />
+</p>
+<p> There always is implicit AND operator, so "hello world" query actually means "hello & world". </p>
+<p>
+OR operator precedence is higher than AND, so "looking for cat | dog | mouse" means "looking for ( cat | dog | mouse )" and
+<span class="emphasis">
+<em>not</em>
+</span>
+"(looking for cat) | dog | mouse".
+</p>
+<p> Queries like "-dog", which implicitly include all documents from the collection, can not be evaluated. This is both for technical and performance reasons. Technically, Sphinx does not always keep a list of all IDs. Performance-wise, when the collection is huge (ie. 10-100M documents), evaluating such queries could take very long. </p>
+</div>
+
+
+
+<div class="sect2" lang="en">
+<div class="titlepage">
+<div>
+<div>
+<h1>
+<a name="extended-syntax"></a>
+4.3. Extended query syntax
+</h1>
+</div>
+</div>
+</div>
+<p> The following special operators can be used when using the extended matching mode: </p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>
+operator OR:
+<pre class="programlisting">hello | world</pre>
+</li>
+<li>
+operator NOT:
+<pre class="programlisting">hello -world hello !world </pre>
+</li>
+<li>
+field search operator:
+<pre class="programlisting">@title hello @body world</pre>
+</li>
+<li>
+field position limit modifier (introduced in version 0.9.9):
+<pre class="programlisting">@body[50] hello</pre>
+</li>
+<li>
+multiple-field search operator:
+<pre class="programlisting">@(title, body) hello world</pre>
+</li>
+<li>
+all-field search operator:
+<pre class="programlisting">@* hello</pre>
+</li>
+<li>
+phrase search operator:
+<pre class="programlisting">"hello world"</pre>
+</li>
+<li>
+proximity search operator:
+<pre class="programlisting">"hello world"~10</pre>
+</li>
+<li>
+quorum matching operator:
+<pre class="programlisting">"the world is a wonderful place"/3</pre>
+</li>
+<li>
+exact form operator (introduced in version 0.9.9):
+<pre class="programlisting">raining =cats and =dogs</pre>
+</li>
+</ul>
+</div>
+
+<p> Here's an example query which uses most of these operators: </p>
+<div class="example">
+<a name="ex-extended-query"></a>
+<p class="title">
+<b>Extended matching mode: complex query example</b>
+</p>
+<div class="example-contents">
+<pre class="programlisting">"hello world" @title "example program"~5 @body python -(php|perl) @* code </pre>
+</div>
+</div>
+<p>
+<br class="example-break"/>
+The full meaning of this search is:
+</p>
+<div class="itemizedlist">
+<ul type="disc">
+<li>Find the words 'hello' and 'world' adjacently in any field in a document;</li>
+<li>Additionally, the same document must also contain the words 'example' and 'program' in the title field, with up to, but not including, 10 words between the words in question; (E.g. "example PHP program" would be matched however "example script to introduce outside data into the correct context for your program" would not because two terms have 10 or more words between them)</li>
+<li>Additionally, the same document must contain the word 'python' in the body field, but not contain either 'php' or 'perl';</li>
+<li>Additionally, the same document must contain the word 'code' in any field.</li>
+</ul>
+</div>
