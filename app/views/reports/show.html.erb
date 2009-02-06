@@ -6,6 +6,8 @@
     <span class="info"><%= @report.patient_id %>
     <span class="heading">Procedure Name:</span>
     <span class="info"><%= @report.procedure_name %></span>
+    <span class="heading">Radiologist:</span>
+    <span class="info"><%= @report.attending %></span>
   </div>
   <div class="body">
     <% highlight_words(@search_terms) do %>

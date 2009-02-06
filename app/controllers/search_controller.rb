@@ -20,6 +20,7 @@ class SearchController < ApplicationController
     end
 
     @reports = IdxReport.search(@search_string, :page => @page, :per_page => 10) if contains_reason or not new_search
+    @reports ||= []
     jsoned_reasons = (@reasons_for.keys.inject([]) {|list,key| list.push(key) if @reasons_for[key] == "1"; list }).to_json if contains_reason
     @search_log = SearchLog.create(:username => session[:username], :search_string => @search_string, :reason_for => jsoned_reasons) if contains_reason or not new_search
 

@@ -12,4 +12,8 @@
   </div>
 <% end %>
 
-<%= will_paginate(reports) %>
+<% if reports.size > 0 %>
+  <%= will_paginate(reports) %>
+<% else %>
+  <div class="error-message">Found no reports ...</div>
+<% end %>
