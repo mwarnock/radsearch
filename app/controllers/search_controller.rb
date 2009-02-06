@@ -1,6 +1,5 @@
 class SearchController < ApplicationController
-  #before_filter :authenticate
-  before_filter {|c| c.session[:username] = "max"}
+  before_filter :authenticate
   hipaa_filter
 
   def index
