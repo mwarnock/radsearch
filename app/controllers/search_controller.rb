@@ -31,4 +31,7 @@ class SearchController < ApplicationController
     end
   end
 
+  def use
+  end
+
 end
