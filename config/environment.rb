@@ -65,3 +65,12 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
+
+Ultrasphinx::Search.excerpting_options = HashWithIndifferentAccess.new({
+    :before_match => '<span class="highlight">',
+    :after_match => '</span>',
+    :chunk_separator => " <span style='font-weight: bold'>...</span> ",
+    :limit => 512,
+    :around => 4,
+    :content_methods => ['report']
+  })

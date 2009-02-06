@@ -1,19 +1,15 @@
 <% reports.each do |report| %>
-  <div class="short-report">
+  <div class="short-report <%= cycle('odd','even') %>">
     <a href="<%= url_for(:controller => :reports, :action => :show, :id => report.id) %>">
-    <div class="study-info">
-      <span class="heading">Accession #</span>
-      <span class="info"><%= report.accession_number %></span>
-      <span class="heading">Reason For Study:</span>
-      <span class="info"><%= report.diag %></span>
-      <span class="heading">Procedure Name:</span>
+      <span class="">Procedure Name:</span>
       <span class="info"><%= report.procedure_name %></span>
-    </div>
+      <span class="">Reason For Study:</span>
+      <span class="info"><%= report.diag %></span>
     </a>
     <div class="body">
-      <% highlight_words(search_terms) do %>
-        <%= format_report(report.report) %>
-      <% end %>
+        <%= report.report %>
     </div>
   </div>
 <% end %>
+
+<%= will_paginate(reports) %>
