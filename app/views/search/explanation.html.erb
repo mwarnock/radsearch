@@ -1,137 +1,59 @@
-<div class="sect2" lang="en">
-<div class="titlepage">
-<div>
-<div>
-<h1>
-<a name="boolean-syntax"></a>
-4.2. Boolean query syntax
-</h1>
-</div>
-</div>
-</div>
-<p> Boolean queries allow the following special operators to be used: </p>
-<div class="itemizedlist">
-<ul type="disc">
-<li>
-explicit operator AND:
-<pre class="programlisting">hello & world</pre>
-</li>
-<li>
-operator OR:
-<pre class="programlisting">hello | world</pre>
-</li>
-<li>
-operator NOT:
-<pre class="programlisting">hello -world hello !world </pre>
-</li>
-<li>
-grouping:
-<pre class="programlisting">( hello world )</pre>
-</li>
-</ul>
-</div>
-<p> Here's an example query which uses all these operators: </p>
-<div class="example">
-<a name="ex-boolean-query"></a>
-<p class="title">
-<b>Complex Boolean query example</b>
-</p>
-<div class="example-contents">
-<pre class="programlisting">( cat -dog ) | ( cat -mouse) </pre>
-</div>
-</div>
+<h1>Using RadSearch</h1> 
+<p>RadSearch is a powerful tool that allows for complex search queries. Below is a starter guide for 
+using the search terminology</p>
+<h2>How to Search with Multiple Terms</h2>
+<p>Searching for multiple terms allow for complex, accurate searching. Used correctly, they are an invaluable tool for 
+discovering studies.</p>
+<h3>How to Think About Multiple Term Search</h3>
 <p>
-<br class="example-break" />
+	<pre><ul>
+		<li>lung and nodule, lung AND nodule <i>the cases I am searching for must contain both lung and nodule</i></li>
+		<li>lung or nodule, lung OR nodule <i>the cases I am searching for must contain either lung or nodule</i></li>
+		<li>lung not nodule, lung !nodule, lung NOT nodule <i>the case I am searching for must contain lung and not nodule</i></li>
+		</ul>
+	</pre>
+ Specific information about these three ways to search multiple terms follow below: 
 </p>
-<p> There always is implicit AND operator, so "hello world" query actually means "hello & world". </p>
-<p>
-OR operator precedence is higher than AND, so "looking for cat | dog | mouse" means "looking for ( cat | dog | mouse )" and
-<span class="emphasis">
-<em>not</em>
-</span>
-"(looking for cat) | dog | mouse".
+<h4>AND</h4>
+<pre>Query Example: lung &amp; nodule</pre>
+<p>This query will yield results of cases that have both key terms "lung" and "nodule". Search is based both on inclusion of these terms as well as
+their proximity to each other.</p>
+<p><em>N.B.</em> Whenever you query RadSearch, there is an <em>implicit</em> AND operator, meaning:</p>
+<pre>lung &amp; nodule and lung nodule</pre> will both yield the same results. Keep in mind you can start an AND query with the operators: &amp;, AND, or by typing in the two search terms you want to "link" together</p>
+<h4>OR</h4>
+<p>An OR query will yield results of cases that have either the key term lung or nodule. An OR query might be used to search for two terms 
+	that are synonymous</p>
+<p>You can start an OR query with the following operators: |, OR</p>
+<h4>NOT</h4>
+<p>A NOT query will exclude the term you preface with a NOT operator. Such a query might be used if you are looking for cases where the search terms are often related, but you're looking for a larger pool of cases.  In the lung nodule example, lung -nodule would obviously yield considerably more cases than lung nodule. This operator can be used to widen your scope of searches.</p>
+<h2>Complicated Searches</h2>
+<p>Multiple terms can be used in more complex searches, should you need them.</p>
+<h3>Grouping</h3>
+<p>Grouping terms will allow you to create even more complex queries, for example:
+<pre>(lung nodule) | (nodule -chest)</pre>
+would yield a search for lung nodules or nodules without the term chest.</p>
+<h3>Expanding Complicated Searches</h3>
+<p>Using RadSearch does not limit you to just AND, OR, NOT based searches. The search engine allows you to extend your searching even more by searching the case fields</p>
+<h3>Field Searching</h3>
+<p>All fields are searched by default.  In order to search through specific fields you would use the following:</p>
+<p>If you wanted to search for an interesting case with a specific radiologist in mind, you would use:
+	<pre>radiologist: Smith</pre>
+   Modalities can be searched using a similar search construct: 
+    <pre>modality: CT</pre>
+    This query can be combined to include both fields, so:
+    <pre>@(radiologist, modality) Smith MRI</pre>
+    or:
+    <pre>(radiologist, modality): Smith MRI </pre>
+    </p>
+<p>Field searching can be extended to just the body of the case. For example, if you were researching lung nodules in males, you might include in your search:  
+	<pre>report: male lung nodule</pre>
+Finally, you can also conduct a search based on the Procedure Name field found at the top of the case:
+	<pre>procedure: lung nodule</pre>
+Field searching allows for flexible, complex searching based solely in the field specifiied. You can obtain very precise search results by using this method. 
 </p>
-<p> Queries like "-dog", which implicitly include all documents from the collection, can not be evaluated. This is both for technical and performance reasons. Technically, Sphinx does not always keep a list of all IDs. Performance-wise, when the collection is huge (ie. 10-100M documents), evaluating such queries could take very long. </p>
-</div>
-
-
-
-<div class="sect2" lang="en">
-<div class="titlepage">
-<div>
-<div>
-<h1>
-<a name="extended-syntax"></a>
-4.3. Extended query syntax
-</h1>
-</div>
-</div>
-</div>
-<p> The following special operators can be used when using the extended matching mode: </p>
-<div class="itemizedlist">
-<ul type="disc">
-<li>
-operator OR:
-<pre class="programlisting">hello | world</pre>
-</li>
-<li>
-operator NOT:
-<pre class="programlisting">hello -world hello !world </pre>
-</li>
-<li>
-field search operator:
-<pre class="programlisting">@title hello @body world</pre>
-</li>
-<li>
-field position limit modifier (introduced in version 0.9.9):
-<pre class="programlisting">@body[50] hello</pre>
-</li>
-<li>
-multiple-field search operator:
-<pre class="programlisting">@(title, body) hello world</pre>
-</li>
-<li>
-all-field search operator:
-<pre class="programlisting">@* hello</pre>
-</li>
-<li>
-phrase search operator:
-<pre class="programlisting">"hello world"</pre>
-</li>
-<li>
-proximity search operator:
-<pre class="programlisting">"hello world"~10</pre>
-</li>
-<li>
-quorum matching operator:
-<pre class="programlisting">"the world is a wonderful place"/3</pre>
-</li>
-<li>
-exact form operator (introduced in version 0.9.9):
-<pre class="programlisting">raining =cats and =dogs</pre>
-</li>
-</ul>
-</div>
-
-<p> Here's an example query which uses most of these operators: </p>
-<div class="example">
-<a name="ex-extended-query"></a>
-<p class="title">
-<b>Extended matching mode: complex query example</b>
-</p>
-<div class="example-contents">
-<pre class="programlisting">"hello world" @title "example program"~5 @body python -(php|perl) @* code </pre>
-</div>
-</div>
-<p>
-<br class="example-break"/>
-The full meaning of this search is:
-</p>
-<div class="itemizedlist">
-<ul type="disc">
-<li>Find the words 'hello' and 'world' adjacently in any field in a document;</li>
-<li>Additionally, the same document must also contain the words 'example' and 'program' in the title field, with up to, but not including, 10 words between the words in question; (E.g. "example PHP program" would be matched however "example script to introduce outside data into the correct context for your program" would not because two terms have 10 or more words between them)</li>
-<li>Additionally, the same document must contain the word 'python' in the body field, but not contain either 'php' or 'perl';</li>
-<li>Additionally, the same document must contain the word 'code' in any field.</li>
-</ul>
-</div>
+<h3>Phrase Searching</h3>
+<p>Using quotes in a search will return the exact phrase in those quotes, i.e.
+	<pre>"lung nodule"</pre>
+	would yield studies that match this exactly. You can extend this search even further by including:
+	<pre>"lung nodule"~10</pre>
+	which would give you the terms lung and nodule no more than ten words apart. 
