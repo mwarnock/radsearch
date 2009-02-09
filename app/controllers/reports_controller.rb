@@ -10,8 +10,8 @@ class ReportsController < ApplicationController
     @search_terms ||= []
     @report = IdxReport.find(params[:id])
     respond_to do |format|
-      format.json { render :json => @report.attributes.to_json }
       format.html
+      format.json { render :json => @report.attributes.to_json }
     end
   end
 
@@ -22,8 +22,8 @@ class ReportsController < ApplicationController
     results = IdxReport.search(@search_string)
 
     respond_to do |format|
-      format.json { render :json => (results.collect(&:attributes)).to_json }
       format.html
+      format.json { render :json => (results.collect(&:attributes)).to_json }
     end
   end
 
