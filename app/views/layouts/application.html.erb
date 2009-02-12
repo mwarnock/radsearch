@@ -37,6 +37,8 @@
     <td id="menu">
             <div id="primary">
 	      <%= link_to "Search", :controller => "search" %> |
+	      <%= link_to "Help", :controller => "search", :action => "explanation" %> |
+	      <%= link_to "Terms of Use", :controller => "search", :action => "use" %> |
 	      <%= link_to "Log Out", :controller => "login", :action => "logout" %>
 	    </div>
     </td>
