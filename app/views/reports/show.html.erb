@@ -1,9 +1,11 @@
 <div class="short-report">
   <div class="study-info">
+    <% anonymize_appropriately do %>
     <span class="heading">Accession #</span>
     <span class="info"><%= @report.accession_number %></span>
     <span class="heading">Patient ID</span>
     <span class="info"><%= @report.patient_id %>
+    <% end %>
     <span class="heading">Procedure Name:</span>
     <span class="info"><%= @report.procedure_name %></span>
     <span class="heading">Radiologist:</span>

@@ -1,3 +1,4 @@
+<h3>Total reports found: <%= reports.size > 0 ? reports.total_entries : 0 %></h3>
 <% reports.each do |report| %>
   <div class="short-report <%= cycle('odd','even') %>">
     <a href="<%= url_for(:controller => :reports, :action => :show, :id => report.id) %>">
