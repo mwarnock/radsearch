@@ -1,8 +1,8 @@
-<h1>Using RadSearch</h1> 
-<p>RadSearch is a powerful tool that allows for complex search queries. Below is a starter guide for 
+        <h1>Using RadSearch</h1>
+<p>RadSearch is a powerful tool that allows for complex search queries. Below is a starter guide for
 using the search terminology</p>
 <h2>How to Search with Multiple Terms</h2>
-<p>Searching for multiple terms allow for complex, accurate searching. Used correctly, they are an invaluable tool for 
+<p>Searching for multiple terms allow for complex, accurate searching. Used correctly, they are an invaluable tool for
 discovering studies.</p>
 <h3>How to Think About Multiple Term Search</h3>
 <p>
@@ -12,7 +12,7 @@ discovering studies.</p>
 		<li>lung not nodule, lung !nodule, lung NOT nodule <i>the case I am searching for must contain lung and not nodule</i></li>
 		</ul>
 	</pre>
- Specific information about these three ways to search multiple terms follow below: 
+ Specific information about these three ways to search multiple terms follow below:
 </p>
 <h4>AND</h4>
 <pre>Query Example: lung &amp; nodule</pre>
@@ -21,7 +21,7 @@ their proximity to each other.</p>
 <p><em>N.B.</em> Whenever you query RadSearch, there is an <em>implicit</em> AND operator, meaning:</p>
 <pre>lung &amp; nodule and lung nodule</pre> will both yield the same results. Keep in mind you can start an AND query with the operators: &amp;, AND, or by typing in the two search terms you want to "link" together</p>
 <h4>OR</h4>
-<p>An OR query will yield results of cases that have either the key term lung or nodule. An OR query might be used to search for two terms 
+<p>An OR query will yield results of cases that have either the key term lung or nodule. An OR query might be used to search for two terms
 	that are synonymous</p>
 <p>You can start an OR query with the following operators: |, OR</p>
 <h4>NOT</h4>
@@ -30,30 +30,19 @@ their proximity to each other.</p>
 <p>Multiple terms can be used in more complex searches, should you need them.</p>
 <h3>Grouping</h3>
 <p>Grouping terms will allow you to create even more complex queries, for example:
-<pre>(lung nodule) | (nodule -chest)</pre>
-would yield a search for lung nodules or nodules without the term chest.</p>
-<h3>Expanding Complicated Searches</h3>
-<p>Using RadSearch does not limit you to just AND, OR, NOT based searches. The search engine allows you to extend your searching even more by searching the case fields</p>
-<h3>Field Searching</h3>
-<p>All fields are searched by default.  In order to search through specific fields you would use the following:</p>
-<p>If you wanted to search for an interesting case with a specific radiologist in mind, you would use:
-	<pre>radiologist: Smith</pre>
-   Modalities can be searched using a similar search construct: 
-    <pre>modality: CT</pre>
-    This query can be combined to include both fields, so:
-    <pre>@(radiologist, modality) Smith MRI</pre>
-    or:
-    <pre>(radiologist, modality): Smith MRI </pre>
-    </p>
-<p>Field searching can be extended to just the body of the case. For example, if you were researching lung nodules in males, you might include in your search:  
-	<pre>report: male lung nodule</pre>
-Finally, you can also conduct a search based on the Procedure Name field found at the top of the case:
-	<pre>procedure: lung nodule</pre>
-Field searching allows for flexible, complex searching based solely in the field specifiied. You can obtain very precise search results by using this method. 
-</p>
+<pre>(lung nodule) | (xray chest)</pre>
+would yield a search for lung nodules or chest xrays.</p>
+<p><em>Please Note:</em>the not operator cannot be included in parenthesis. Searching via a not operator only works on the top level of a search. Therefore:
+	<pre>(lung nodule) | -chest</pre>
+	is a perfectly acceptable query, whereas:
+	<pre>(lung nodule) |(-chest xray)</pre>
+	would return an error message as the NOT operator is nested in parenthesis.
+
 <h3>Phrase Searching</h3>
 <p>Using quotes in a search will return the exact phrase in those quotes, i.e.
 	<pre>"lung nodule"</pre>
-	would yield studies that match this exactly. You can extend this search even further by including:
+	would yield studies that match this exactly. <em>Please Note:</em>you may notice that in phrase searching you will have text that is highlighted that does not match your
+	phrase search exactly.
+	You can extend this search even further by including:
 	<pre>"lung nodule"~10</pre>
-	which would give you the terms lung and nodule no more than ten words apart. 
+	which would give you the terms lung and nodule no more than ten words apart.
