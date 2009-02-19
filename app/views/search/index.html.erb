@@ -8,7 +8,7 @@
 
 <% remote_form_for :search, :url => {:action => "results"}, :update => "results", :loading => "$('form_spinner').show();", :loaded => "$('form_spinner').hide();" do |f| %>
   <div>
-  <%= f.text_field :search_string, :class => "search-box", :size => 55 %>
+  <%= f.text_field :search_string, :class => "search-box", :size => 55, :value => @search_state.search_string %>
   <%= submit_tag "Search" %>
   <%= image_tag("/images/spinner.gif", :id => "form_spinner", :style => "display: none;") %>
   <%= content_tag(:span, link_to("Help", :action => "explanation"), :style => "padding-left: 15px;") %>
@@ -17,4 +17,6 @@
   </div>
 <% end %>
 
-<div id="results"></div>
+<div id="results">
+  <%= render(:partial => "search/results", :locals => {:reports => @search_result.sphinx_object, :search_terms => @search_state.search_string }) if @search_result and (@search_state.contains_reason or not @search_state.new_search) %>
+</div>

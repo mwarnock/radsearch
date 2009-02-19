@@ -3,6 +3,7 @@ class ReportsController < ApplicationController
   hipaa_filter
 
   def index
+    # Can this and it's view be removed??
   end
 
   def show

@@ -10,6 +10,8 @@
     <span class="info"><%= @report.procedure_name %></span>
     <span class="heading">Radiologist:</span>
     <span class="info"><%= @report.attending %></span>
+	<span class="heading">Order Indication:</span>
+	<span class="info"><%= @report.diag %></span>
   </div>
   <div class="body">
     <%= format_report(@report.report) %>
