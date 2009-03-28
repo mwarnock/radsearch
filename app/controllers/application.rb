@@ -14,8 +14,6 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   filter_parameter_logging :password
   
-  alias :ldap_authenticate :authenticate # Included to maintain UMM compatibility
-
   def authenticate
     
     # Authentication
@@ -24,9 +22,6 @@ class ApplicationController < ActionController::Base
     #
     # Radsearch expects the username to be stored in a session variable session[:username].  
     # This is used to store search terms for research and auditing purposes.
-
-    # UMM Config
-    #ldap_authenticate
 
     session[:username] = "bogus"
 
