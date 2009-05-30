@@ -5,3 +5,7 @@ log
 *~
 *.swp
 .project
+config/database.yml
+config/ultrasphinx/development.conf
+config/ultrasphinx/production.conf
+config/initializers/site_keys.rb

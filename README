@@ -28,5 +28,7 @@ INSTALL INSTRUCTIONS
    rake ultrasphinx:configure
    rake ultrasphinx:index
    rake ultrasphinx:daemon:start
-6. You may want to set up a cron job to call rake ultrasphinx:index nightly
+6. You will want to set up a cron job to call rake ultrasphinx:index nightly
 7. Customize authentication and hipaa audit trail logging in application.rb
+8. The default user/pass is admin/admin - there currently aren't functions to update users,
+   so you'll want to create a new admin user and delete the default.

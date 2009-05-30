@@ -1,0 +1,21 @@
+<% if !@users.empty? %>
+	<tr>
+		<th>Login</th>
+		<th>Email</th>
+		<th>Created At</th>
+		<th>Updated At</th>
+	</tr>
+	<% for user in @users -%>
+	    <tr valign="top" id="<%= cycle("ListLine1", "ListLine0") %>">
+	      <td><%=h user.login %></td>
+	      <td><%=h user.email %></td>
+	      <td><%=h user.created_at %></td>
+		  <td><%=h user.updated_at %></td>
+	      <td><%= link_to (" edit ", edit_user_path(user))%>
+		  <% form_tag user_path(user), :method => :delete do -%>    
+            <%= submit_tag("Delete", :confirm => "This cannot be undone, are you sure?") %>
+          <% end -%></td>
+	    </tr>
+	<% end -%>
+<% end -%>
+<%= link_to "New User", signup_path %>

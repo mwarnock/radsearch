@@ -1,0 +1,3 @@
+config_file: /etc/sphinx.conf
+root_dir: /usr/bin
+indexes: idxreportidx

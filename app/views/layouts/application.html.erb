@@ -35,11 +35,14 @@
     </td>
 
     <td id="menu">
-            <div id="primary">
+        <div id="primary">
 	      <%= link_to "Search", :controller => "search" %> |
 	      <%= link_to "Help", :controller => "search", :action => "explanation" %> |
 	      <%= link_to "Terms of Use", :controller => "search", :action => "use" %> |
-	      <%= link_to "Log Out", :controller => "login", :action => "logout" %>
+		  <% if logged_in? -%>
+		    <%= link_to "My Account", edit_user_path(current_user) %> |
+			<%= link_to "Logged in as: #{current_user.login} - Log Out", logout_path %>
+		  <% end%>
 	    </div>
     </td>
   </tr>

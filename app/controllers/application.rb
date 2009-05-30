@@ -3,6 +3,9 @@
 
 class ApplicationController < ActionController::Base
   
+  # This is a module that loads necessary restful_authentication for every controller
+  include AuthenticatedSystem
+  
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
@@ -20,11 +23,16 @@ class ApplicationController < ActionController::Base
     #
     # Custom authentication should be implemented here.
     #
+
     # Radsearch expects the username to be stored in a session variable session[:username].  
     # This is used to store search terms for research and auditing purposes.
-
-    session[:username] = "bogus"
-
+    
+    if logged_in?
+       session[:username] = User.find(session[:user_id]).login
+    else
+       access_denied
+    end
+   
   end
 
   def hipaa_filter
