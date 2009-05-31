@@ -17,7 +17,7 @@ REQUIRED GEMS
  - chronic (req by ultrasphinx)
  
 RELATED PLUGINS
-rad_ldap - allows for LDAP based authentication (requires gem - ruby-net-ldap
+rad_ldap - allows for LDAP based authentication (requires gem - ruby-net-ldap)
 
 INSTALL INSTRUCTIONS
 1. Install rails and necessary gems
@@ -27,7 +27,7 @@ INSTALL INSTRUCTIONS
 5. Finalize sphinx using ultrasphinx rake tasks:
    rake ultrasphinx:configure
    rake ultrasphinx:index
-   rake ultrasphinx:daemon:start
+   rake ultrasphinx:daemon:start (must be run as root, or sudo)
 6. You will want to set up a cron job to call rake ultrasphinx:index nightly
 7. Customize authentication and hipaa audit trail logging in application.rb
 8. The default user/pass is admin/admin - there currently aren't functions to update users,
