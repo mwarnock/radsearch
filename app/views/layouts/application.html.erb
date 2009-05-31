@@ -38,8 +38,12 @@
         <div id="primary">
 	      <%= link_to "Search", :controller => "search" %> |
 	      <%= link_to "Help", :controller => "search", :action => "explanation" %> |
-	      <%= link_to "Terms of Use", :controller => "search", :action => "use" %> |
+	      <%= link_to "Terms of Use", :controller => "search", :action => "use" %>
 		  <% if logged_in? -%>
+		  	|
+			<% if current_user.login == "admin" -%>
+			   <%= link_to "List Users", users_path %> |
+			<% end -%>
 		    <%= link_to "My Account", edit_user_path(current_user) %> |
 			<%= link_to "Logged in as: #{current_user.login} - Log Out", logout_path %>
 		  <% end%>

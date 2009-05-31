@@ -15,19 +15,31 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.s
 
 class UsersController < ApplicationController
-  before_filter :requires_admin, :only => [:index, :new, :create, :destroy]
+  before_filter :requires_admin, :except => [:edit, :update]
+  before_filter :can_edit_self, :only => [:edit, :update]
   
   def requires_admin
+    # Admin is required for every action except user password changes
+    # Which use the edit and update actions
+    
+    # Make sure only admin can edit other users.
+    if session[:username] != "admin"
+      flash[:notice] = "Only admin can manage users."
+      redirect_back_or_default('/search')
+    end
+  end
+  
+  def can_edit_self
+    # Redirect to requires_admin if a non-admin user tries to edit another user.
+    if session[:user_name] != "admin" && session[:user_id].to_s != params[:id]
+      flash[:notice] = "Cannot edit other users."
+      redirect_back_or_default('/search')
+    end
   end
   
   # GET - displays all users
   def index
     @users = User.find(:all)
-  end
-  
-  # This will hold a link to the list of users
-  def admin
-    
   end
 
   # render new.rhtml
@@ -53,14 +65,18 @@ class UsersController < ApplicationController
   
   def destroy
     @user = User.find(params[:id])
-    login = @user.login
-    @user.destroy
-    flash[:notice] = "Account #{login} deleted."
+    unless @user.login == "admin"
+      login = @user.login
+      @user.destroy
+      flash[:notice] = "Account #{login} deleted."
+    else
+      flash[:notice] = "Cannot delete admin account"
+    end
     redirect_to users_path
   end
   
   def edit
-    @user = @current_user
+    # Get user object based on parameters passed by browser
     @user = User.find(params[:id])
   end
   
