@@ -37,7 +37,7 @@ module HipaaLog
                                                         :request_uri => context.request.request_uri,
                                                         :created_at => Time.now.to_s(:db)
                                                       })
-      open("http://radbench1.radiology.umm.edu:8085/log/view.json", :method => :post, :body => self.view_log_hash.to_json) if self.match_found
+      open("http:/hipaalogserver/", :method => :post, :body => self.view_log_hash.to_json) if self.match_found
     end
 
     def inspect_instance_variables
