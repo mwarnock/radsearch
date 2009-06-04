@@ -15,19 +15,25 @@ ultrasphinx rails plugin - http://blog.evanweaver.com/files/doc/fauna/ultrasphin
 
 REQUIRED GEMS
  - chronic (req by ultrasphinx)
- 
-RELATED PLUGINS
-rad_ldap - allows for LDAP based authentication (requires gem - ruby-net-ldap)
+ - rest_open_uri (required for hipaa_filter plugin, which is currently inactive)
 
 INSTALL INSTRUCTIONS
 1. Install rails and necessary gems
 2. Download and compile sphinx - make sure you have the mysql development headers
-3. Setup your mysql database.  The default parameters are listed in config/database.yml.dist
+3. Setup your mysql database.  
+  - copy config/database.yml.dist to config/database.yml and edit to reflect your
+    desired mysql configuration
+  - rake db:create to create all the necessary databases
+  - rake db:schema:load to load database schema from db/schema.rb
 4. Load the test data provided: db/test_data.sql
+  - mysql -u <username> -p
+  - use radsearch;
+  - source db/test_data.sql;
 5. Finalize sphinx using ultrasphinx rake tasks:
    rake ultrasphinx:configure
    rake ultrasphinx:index
    rake ultrasphinx:daemon:start (must be run as root, or sudo)
-6. You will want to set up a cron job to call rake ultrasphinx:index nightly
+6. You will want to set up a cron job to call rake ultrasphinx:index nightly 
+  - this should also be done as root
 7. Customize authentication and hipaa audit trail logging in application.rb
 8. The default user/pass is admin/password
