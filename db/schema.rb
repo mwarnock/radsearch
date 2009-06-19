@@ -11,6 +11,13 @@
 
 ActiveRecord::Schema.define(:version => 20090329170101) do
 
+  create_table "accession_number_logs", :force => true do |t|
+    t.integer "view_id", :null => false
+    t.text    "value",   :null => false
+  end
+
+  add_index "accession_number_logs", ["view_id"], :name => "view_id"
+
   create_table "idx_reports", :force => true do |t|
     t.string "patient_id",       :limit => 15
     t.text   "patient_name"
@@ -36,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20090329170101) do
 
   add_index "idx_reports", ["patient_id"], :name => "some_id"
   add_index "idx_reports", ["accession_number"], :name => "accession_number"
+
+  create_table "patient_id_logs", :force => true do |t|
+    t.integer "view_id", :null => false
+    t.text    "value",   :null => false
+  end
+
+  add_index "patient_id_logs", ["view_id"], :name => "view_id"
 
   create_table "search_import", :force => true do |t|
     t.string  "name",             :limit => 64, :null => false
@@ -65,5 +79,15 @@ ActiveRecord::Schema.define(:version => 20090329170101) do
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+
+  create_table "view_logs", :force => true do |t|
+    t.string   "requesting_username", :limit => 50, :null => false
+    t.string   "requesting_ip",       :limit => 15, :null => false
+    t.string   "application_name",                  :null => false
+    t.text     "request_uri",                       :null => false
+    t.datetime "created_at",                        :null => false
+  end
+
+  add_index "view_logs", ["requesting_username"], :name => "username"
 
 end
