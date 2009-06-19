@@ -51,10 +51,4 @@ class ApplicationController < ActionController::Base
    
   end
 
-  def hipaa_filter
-    # Include configuration for your own hipaa audit log here.
-    # If you're using the umm hipaa log plugin, it provides the hippa_filter
-    # and this can be deleted.
-  end
-  
 end
