@@ -9,3 +9,5 @@ log
 config/database.yml
 config/ultrasphinx/development.conf
 config/ultrasphinx/production.conf
+Capfile
+config/deploy.rb
