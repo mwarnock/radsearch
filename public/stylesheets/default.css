@@ -1,0 +1,529 @@
+/*
+** HTML elements
+*/
+body {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  background-color: #fff;
+  font: 76% Verdana, Arial, Helvetica, sans-serif;
+}
+fieldset {
+  border: 1px solid #ccc;
+}
+pre {
+  background-color: #eee;
+  padding: 0.75em 1.5em;
+  font-size: 12px;
+  border: 1px solid #ddd;
+}
+ 
+ 
+/******************
+****** Tables *****
+*******************/
+ 
+table {
+  /* make <td> sizes relative to body size! */
+  font-size: 1em;
+}
+ 
+td.image-link {
+  text-align: center;
+}
+ 
+tr.odd td, tr.even td {
+  padding: 0.3em;
+}
+td.data {
+  text-align: right;
+}
+td.center {
+  text-align: center;
+}
+td.report-container {
+  width: 50%;
+  text-align: left;
+  vertical-align: top;
+}
+ 
+table.text-list img {
+  border: 1px solid #369;
+}
+ 
+/*
+*
+* Form Styles
+*
+*/
+ 
+.form-item {
+  padding-bottom: 6px;
+}
+.form-item label {
+  font-size: 1em;
+  font-weight: bold;
+  color: #103262;
+}
+ 
+/*
+** Page layout blocks / IDs
+*/
+table.header {
+  width: 100%;
+}
+#header-background {
+  height: 50px;
+}
+#header {
+}
+#headingUL {
+  height: 39px;
+  width: 602px;
+  background-color: #103262;
+  vertical-align: top;
+}
+#headingUL img {
+  border: 0;
+  padding: 0em 0em 0em 0em;
+}
+#headingUR {
+  text-align: right;
+  vertical-align: middle;
+  background-color: #103262;
+  border: 0;
+}
+#logo {
+  width: 130px;
+  vertical-align: middle;
+  border: 0;
+}
+#menu {
+  padding: 0.5em 0.5em 0 0.5em;
+  text-align: right;
+  vertical-align: top;
+}
+ 
+#primary {
+  vertical-align: top;
+  font-size: 1.0em;
+  padding: 0em 0.8em 0.5em 0;
+  color: #9cf;
+}
+ 
+#primary a {
+  vertical-align: top;
+  font-weight: bold;
+  color: #103262;
+}
+ 
+/*
+*
+* Links and Changes on Action
+*
+*/
+ 
+a {
+  text-decoration: none;
+  font-weight: bold;
+}
+ 
+a:link {
+  color: #2a90c3;
+}
+ 
+a:visited {
+  color: #369;
+}
+ 
+a:hover {
+  color: #39c;
+  text-decoration: underline;
+}
+ 
+.site-name a:link, .site-name a:visited {
+  color: #FFFFFF;
+}
+
+/*
+*
+* Skin Components
+*
+*/
+ 
+#content {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  width: 100%;
+}
+ 
+#main {
+  /* padding in px not ex because IE messes up 100% width tables otherwise */
+  
+}
+ 
+.padded {
+  padding: 10px;
+}
+ 
+.site-name {
+  margin: 0.6em 0em 0em 0em;
+  padding: 0em;
+  font-size: 1.8em;
+}
+ 
+.site-name a:hover {
+  color: #336699;
+  text-decoration: none;
+}
+ 
+.report {
+  text-align: left;
+  vertical-align: top;
+  background-color: #e3e3e3;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+  padding: 2px;
+}
+ 
+.section-container {
+  border: 1px solid #ccc;
+  padding: 3px; 3px; 3px; 3px;
+  margin-bottom: 50p
+ 
+}
+ 
+.sub-section-container {
+  border: 1px dashed #ccc;
+  padding: 3px; 3px; 3px; 3px;
+  margin-bottom: 50p
+ 
+}
+.section-item {
+  padding-left: 2%;
+  padding-bottom: 1em;
+}
+ 
+.content {
+  line-height: 1.4;
+}
+ 
+.odd {
+  background-color: #efebfe;
+  padding-left: 5px;
+}
+ 
+.even {
+  padding-left: 5px;
+  /*background-color: #ffffff;*/
+}
+/*
+*
+* Headings
+*
+*/
+ 
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.5em;
+}
+h1 {
+  font-size: 1.3em;
+  color: #103262;
+}
+.heading {
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #777;
+  margin: 0 auto 0 auto; /* decrease default margins for h<x>.title */
+  padding-bottom: .9em;
+}
+ 
+.inline-heading {
+  font-size: 1em;
+  font-weight: bold;
+  color: #103262;
+  padding-right: 5px;
+}
+ 
+h2 {
+  font-size: 1.2em;
+  color: #777;
+}
+h3, h4, h5, h6 {
+  font-size: 1.1em;
+}
+ 
+.heading {
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #103262;
+  margin: 0 auto 0 auto; /* decrease default margins for h<x>.title */
+  padding-bottom: .9em;
+}
+ 
+.section-item-heading {
+  font-size: 1em;
+  font-weight: bold;
+  color: #103262;
+}
+ 
+span.text-heading {
+  color: #103262;
+  font-weight: bold;
+}
+ 
+.section-container-heading {
+  padding: 0px; 0px; 0px; 0px;
+}
+ 
+th.text-heading {
+  font-size: 1em;
+  font-weight: bold;
+  color: #103262;
+}
+th.text-heading a {
+  text-decoration: none;
+  color: #103262;
+}
+ 
+/*
+*
+* Bread Crumbs
+*
+*/
+ 
+.breadcrumb {
+  margin-bottom: .5em;
+  font-weight: bold;
+}
+ 
+ 
+/*
+*
+* Rounded Corner Division Styles
+*
+*/
+ 
+img.corner {
+  border: none;
+  display: block !important;
+}
+ 
+.roundtop-white {
+  background: url('som_images/white_corner_ur.gif') no-repeat top right;
+}
+ 
+.roundbottom-white {
+  background: url('som_images/white_corner_lr.gif') no-repeat bottom right;
+}
+ 
+.roundtop-blue {
+  background: url('som_images/deep_blue_corner_ur.jpg') no-repeat top right;
+}
+ 
+.roundbottom-blue {
+  background: url('som_images/deep_blue_corner_lr.jpg') no-repeat bottom right;
+}
+ 
+.roundcont-white {
+  margin: 0 5px;
+  background-color: white;
+}
+ 
+.roundcont-blue {
+  background-color: #103262;
+  color: #fff;
+  margin-top: 15px;
+}
+.roundcont-nav-size {
+  width: 250px;
+}
+.roundcont-full-size {
+  width: 100%;
+}
+ 
+#sidebar-left, #sidebar-right {
+  /* padding in px not ex because IE messes up 100% width tables otherwise */
+  padding: 0px;
+  vertical-align: top;
+}
+#sidebar-right {
+  float: right;
+}
+ 
+/*
+*
+* Styles for Naviagation Boxes
+*
+*/
+ 
+h2.nav-block {
+  /*
+border-bottom: solid;
+border-color: #efebfe;
+*/
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #103262;
+}
+ 
+.navcont {
+  color: #103262;
+}
+ 
+/*
+*
+* Tab navigation (Tabs)
+*
+*/
+ 
+ul.primary {
+  border-collapse: collapse;
+  padding: 0 0 0 1em;
+  white-space: nowrap;
+  list-style: none;
+  margin: 5px;
+  height: auto;
+  line-height: normal;
+  border-bottom: 1px solid #bbb;
+}
+ul.primary li {
+  display: inline;
+}
+ul.primary li a {
+  background-color: #ddd;
+  border-color: #bbb;
+  border-width: 1px;
+  border-style: solid solid none solid;
+  height: auto;
+  margin-right: 0.5em;
+  padding: 0 1em;
+  text-decoration: none;
+}
+ul.primary li.active a {
+  background-color: #fff;
+  border: 1px solid #bbb;
+  border-bottom: #fff 1px solid;
+}
+ul.primary li a:hover {
+  background-color: #eee;
+  border-color: #ccc;
+  border-bottom-color: #eee;
+}
+ul.secondary {
+  border-bottom: 1px solid #bbb;
+  padding: 0.5em 1em 0.5em 1em;
+  margin: 5px;
+}
+ul.secondary li {
+  display: inline;
+  padding: 0 1em;
+  border-right: 1px solid #ccc;
+}
+ul.secondary a {
+  padding: 0;
+  text-decoration: none;
+}
+ul.secondary a.active {
+  border-bottom: 4px solid #999;
+}
+ 
+ 
+/*******************
+*** Scaffold CSS **
+*******************/
+ 
+ 
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+ 
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+ 
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+ 
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+ 
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+ 
+div.uploadStatus {
+  margin: 5px;
+}
+ 
+div.progressBar {
+  margin: 5px;
+}
+ 
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid grey;
+  width: 100%;
+}
+ 
+div.progressBar div.background {
+  background-color: #333;
+  height: 18px;
+  width: 0%;
+}
+ 
+/*
+*
+* Footer Styles
+*
+*/
+ 
+#footer {
+  background-color: #eee;
+  padding: 1em;
+  font-size: 0.8em;
+}
+ 
+/*
+*
+*Stack Interface
+*
+*/
+ 
+/*
+div.stack-container {
+}
+ 
+div.stack-heading {
+  background: url('som_images/purple_bevel.jpg') repeat-x top left;
+  font-size: 1.2em;
+  color: #103262;
+}
+div.stack-content {
+  background-color: #efefef;
+}
+
+*/
