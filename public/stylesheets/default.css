@@ -143,6 +143,7 @@ a:hover {
  
 .site-name a:link, .site-name a:visited {
   color: #FFFFFF;
+  padding: 2px;
 }
 
 /*
